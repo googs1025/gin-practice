@@ -9,7 +9,7 @@ import (
 
 
 var DB *gorm.DB
-
+var DB_Slave *gorm.DB
 
 func initDB(connParam string) {
 
@@ -33,7 +33,29 @@ func initDB(connParam string) {
 
 	DB = db
 
+}
 
+func initDBSlave(connParam string) {
+
+	db, err := gorm.Open(mysql.New(mysql.Config{
+		DSN: connParam,
+		DefaultStringSize: 256,
+		DisableDatetimePrecision: true,
+		DontSupportRenameIndex: true,
+		DontSupportRenameColumn: true,
+		SkipInitializeWithVersion: false,
+	}), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true,
+		},
+	})
+	checkErr(err)
+	sqlDB, _ := db.DB()
+	sqlDB.SetMaxIdleConns(20)
+	sqlDB.SetMaxOpenConns(100)
+	sqlDB.SetConnMaxLifetime(30 * time.Second)
+
+	DB_Slave = db
 
 }
 

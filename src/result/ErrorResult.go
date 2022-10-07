@@ -3,6 +3,8 @@ package result
 import (
 	"fmt"
 	"gin-practice/src/validators"
+
+	//"gin-practice/src/validators"
 )
 
 type ErrorResult struct {

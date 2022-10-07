@@ -2,6 +2,7 @@ package Getter
 
 import (
 	"fmt"
+	"gin-practice/src/data/mappers"
 	dbinit "gin-practice/src/db"
 	"gin-practice/src/models/UserModel"
 	"gin-practice/src/result"
@@ -21,15 +22,18 @@ type IUserGetter interface {
 }
 
 type UserGetterImpl struct {
-
+	userMapper *mappers.UserMapper
 }
 
 func NewUserGetterImpl() *UserGetterImpl {
-	return &UserGetterImpl{}
+	return &UserGetterImpl{userMapper: &mappers.UserMapper{} }
 }
 
 func (u *UserGetterImpl) GetUserList () (users []*UserModel.UserModel) {
 	dbinit.DB.Find(&users)
+
+	//sqlMapper := u.userMapper.GetUserList()
+	//dbinit.DB.Raw(sqlMapper.Sql, sqlMapper.Args).Find(&users)
 	return
 }
 

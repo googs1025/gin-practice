@@ -12,7 +12,7 @@ func init() {
 
 type UserModel struct {
 	UserID int	`gorm:"column:user_id;type:int;primaryKey;autoIncrement" json:"user_id" form:"id" `
-	UserName string `gorm:"column:user_name;unique;type:varchar(50)" json:"user_name" form:"name" binding:"UserName"`	// 把valid校验的参数全都放入validator中。
+	UserName string `gorm:"column:user_name;unique;type:varchar(50)" json:"user_name" form:"name" `	// 把valid校验的参数全都放入validator中。
 	//UserName string `gorm:"column:user_name;unique;type:varchar(50)" json:"user_name" form:"name" binding:"required,min=4,UserName"`	// 都写在这里比较杂
 	UserPwd string `gorm:"column:user_pwd;type:varchar(50)" json:"user_pwd" `
 	UserAddtime string `gorm:"column:user_addtime;type:datetime" json:"addTime" `

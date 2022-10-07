@@ -14,7 +14,7 @@ func init() {
 	//	log.Fatal("valid UserName error!")
 	//}
 	// 第三阶段：封装注册valid函数
-	registerValidation("UserName", UserName("required,min=4").ToFunc())
+	registerValidation("UserName", UserName("required").ToFunc())
 
 
 }
