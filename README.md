@@ -8,6 +8,7 @@
 目前已实现自定义配置功能，**src/db/config.ini** 路径下可配置mysql依赖。
 
 目前已经实现migrate功能，可以自动建立表，不需手动建立。
+目前已新增主从mysql，可以藉由配置不同db与在go中引入不同db实例，实现读写分离。
 ```bigquery
 # 配置文件
 [mysql]
