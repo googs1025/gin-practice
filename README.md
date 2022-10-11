@@ -11,6 +11,8 @@
 
 目前已经实现migrate功能，可以自动建立表，不需手动建立。
 
+
+目前已新增主从mysql，可以藉由配置不同db与在go中引入不同db实例，实现读写分离。
 ```bigquery
 # 配置文件
 [mysql]
@@ -19,6 +21,16 @@ DbHost = 127.0.0.1
 DbPort = 3306
 DbUser = root
 DbPassWord = root
+DbName = test
+```
+```bigquery
+# 预计支持从数据库 读数据
+[mysql_slave]
+Db = mysql
+DbHost = 127.0.0.1
+DbPort = 3307
+DbUser = root
+DbPassWord = 123456
 DbName = test
 ```
 ####2.redis
