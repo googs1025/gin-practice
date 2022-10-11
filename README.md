@@ -3,11 +3,14 @@
 使用wed开发常用的golang-gin框架进行练习demo。
 
 ### 项目依赖
+#### 1. mysql
 **mysql** 需要使用者自行使用docker启动mysql容器，并且自行创建**库**。
 
 目前已实现自定义配置功能，**src/db/config.ini** 路径下可配置mysql依赖。
 
+
 目前已经实现migrate功能，可以自动建立表，不需手动建立。
+
 ```bigquery
 # 配置文件
 [mysql]
@@ -18,6 +21,9 @@ DbUser = root
 DbPassWord = root
 DbName = test
 ```
+####2.redis
+目前预计支持引入redis组件，对某些热点数据进行缓存，且预防缓存穿透。
+
 ### 项目目录
 ```bigquery
 .

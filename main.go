@@ -1,7 +1,7 @@
 package main
 
-
 import (
+	. "gin-practice/practice/redis"
 	"gin-practice/src/common"
 	"gin-practice/src/handlers"
 	"gin-practice/src/models/UserModel"
@@ -14,6 +14,7 @@ import (
 // TODO: 需要把server代码和路由代码拆开，可以搞一个router.go文件
 
 func main() {
+
 	r := gin.New()
 	r.Use(common.ErrorHandler())
 
