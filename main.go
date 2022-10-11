@@ -1,7 +1,6 @@
 package main
 
 import (
-	. "gin-practice/practice/redis"
 	"gin-practice/src/common"
 	"gin-practice/src/handlers"
 	"gin-practice/src/models/UserModel"
@@ -63,11 +62,37 @@ func main() {
 	r.POST("/user", handlers.UserSave)
 
 
+
+	// 练习的路由用。
+	example := make(map[string]string)
+	example["username"] = "jiangjiang"
+	topic := &Topic{
+		TopicID: 111,
+		TopicTitle: "testingtesting",
+	}
+
+	r.GET("/try", func(c *gin.Context) {
+		c.Writer.Write([]byte("hello\n"))	// 直接写数据
+		// 可以把对象直接转为json。
+		c.JSON(200, example)
+		c.JSON(200, topic)
+
+
+
+	})
+
 	// 执行
 	defer func() {
+		// 初始化日记
+		common.InitLogger()
 		_ = r.Run(":8080")
 	}()
 
 
 
+}
+
+type Topic struct {
+	TopicID int
+	TopicTitle string
 }

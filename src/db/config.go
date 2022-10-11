@@ -18,8 +18,8 @@ var (
 
 func init() {
 	workdir, err := os.Getwd()
-	//wrpath := "/src/db/"
-	wrpath := "/"	  // 执行测试文件要用这个路径，不然会报错
+	wrpath := "/src/db/"
+	//wrpath := "/"	  // 执行测试文件要用这个路径，不然会报错
 	var str = []string{workdir, wrpath, "config.ini"}
 	path := strings.Join(str, "")
 
