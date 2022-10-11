@@ -34,7 +34,7 @@ DbPassWord = 123456
 DbName = test
 ```
 
-####2.redis
+#### 2. redis
 
 目前预计支持引入redis组件，对某些热点数据进行缓存，且预防缓存穿透。
 
