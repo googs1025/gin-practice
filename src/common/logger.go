@@ -35,7 +35,7 @@ func InitLogger() {
 		},
 	}
 
-
+	// FIXME: 日志bug还没有解决
 
 	fiHook := lfshook.NewHook(lfshook.WriterMap{
 		logrus.DebugLevel: ,
