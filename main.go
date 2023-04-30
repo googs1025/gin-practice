@@ -1,12 +1,12 @@
 package main
 
 import (
-	"gin-practice/src/common"
-	"gin-practice/src/handlers"
-	"gin-practice/src/models/UserModel"
-	"gin-practice/src/result"
-	"gin-practice/src/test"
-	_ "gin-practice/src/validators"
+	"gin-practice/pkg/common"
+	"gin-practice/pkg/handlers"
+	"gin-practice/pkg/models/UserModel"
+	"gin-practice/pkg/result"
+	"gin-practice/pkg/test"
+	_ "gin-practice/pkg/validators"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +16,6 @@ func main() {
 
 	r := gin.New()
 	r.Use(common.ErrorHandler())
-
 
 	// model初始化的方式推荐
 	//user := UserModel.NewUserModel(UserModel.SetUserModelWithUserID(11), UserModel.SetUserModelWithUserName("jiang"))
@@ -36,7 +35,7 @@ func main() {
 		user.Mutate(UserModel.SetUserModelWithUserID(111), UserModel.SetUserModelWithUserName("jiangjiang"))
 		c.JSON(200, user)
 	})
-	
+
 	r.POST("/user11", func(c *gin.Context) {
 		user := UserModel.NewUserModel()
 
@@ -61,23 +60,19 @@ func main() {
 
 	r.POST("/user", handlers.UserSave)
 
-
-
 	// 练习的路由用。
 	example := make(map[string]string)
 	example["username"] = "jiangjiang"
 	topic := &Topic{
-		TopicID: 111,
+		TopicID:    111,
 		TopicTitle: "testingtesting",
 	}
 
 	r.GET("/try", func(c *gin.Context) {
-		c.Writer.Write([]byte("hello\n"))	// 直接写数据
+		c.Writer.Write([]byte("hello\n")) // 直接写数据
 		// 可以把对象直接转为json。
 		c.JSON(200, example)
 		c.JSON(200, topic)
-
-
 
 	})
 
@@ -88,11 +83,9 @@ func main() {
 		_ = r.Run(":8080")
 	}()
 
-
-
 }
 
 type Topic struct {
-	TopicID int
+	TopicID    int
 	TopicTitle string
 }
